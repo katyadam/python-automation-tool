@@ -1,8 +1,7 @@
 from parse_error import ParseError
-from typing import Optional
 from datetime import datetime
 from bounds import Bound
-
+from td_pairs import TDpair
 
 def parse_size_bounds(size: str) -> Bound:
     """
@@ -30,9 +29,19 @@ def parse_datetime_bounds(input_range: str) -> Bound:
         upper_bound = datetime.strptime(parts[1], "%d.%m.%Y")
         return Bound(lower_bound, upper_bound)
     except ValueError:
-        raise ParseError("Error occured!")
+        raise ParseError("Incorrect datetime bounds!")
 
 def parse_file_types(types_arg: str) -> set[str]:
     return set(types_arg.split(","))
 
+def parse_dataset(pairs_input: str) -> list[TDpair]:
+    result = []
+    
+    for input in pairs_input.split(","):
+        pair = input.split("-")
+        if len(pair) != 2:
+            raise ParseError("Incorrect type-directory pair!")
+        result.append(TDpair(pair[0], pair[1]))
+
+    return result
     

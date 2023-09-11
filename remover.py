@@ -20,7 +20,7 @@ class Remover:
                 logging.info(f"File {file} has been succesfully removed!")
                 os.remove(file)
 
-    def can_be_removed(self, file) -> bool:
+    def can_be_removed(self, file: str) -> bool:
         return os.path.isfile(file) and self.check_file_type(file) and self.is_in_daterange(file) and self.is_in_sizerange(file)
 
     def check_file_type(self, file: str) -> bool:
@@ -40,4 +40,4 @@ class Remover:
         return lower_bound <= file_size <= upper_bound
 
     def log(self) -> str:
-        logging.info("Remover created")
+        logging.info("Remover created!")

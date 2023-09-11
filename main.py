@@ -6,7 +6,7 @@ from factory import Factory
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def run():
+def run() -> None:
     if sys.argv[1] == "-r":
         Factory.auto_remove(sys.argv)
     
