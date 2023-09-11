@@ -34,16 +34,10 @@ class Remover:
     def is_in_sizerange(self, file: str) -> bool:
         file_size = os.path.getsize(file)
 
-        if self.size.lower is None:
-            if self.size.upper is None:
-                return True
-            else:
-                return file_size <= self.size.upper
-        
-        if self.size.upper is None:
-            return file_size >= self.size.lower
-        else:
-            return self.size.lower <= file_size <= self.size.upper
+        lower_bound = self.size.lower if self.size.lower else 0
+        upper_bound = self.size.upper if self.size.upper else float('inf')
+
+        return lower_bound <= file_size <= upper_bound
 
     def log(self) -> str:
         logging.info("Remover created")
