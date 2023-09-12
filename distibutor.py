@@ -16,11 +16,10 @@ class Distributor:
             file = os.path.join(self.path, filename)
             new_dest = self.get_file_new_dest(filename)
             if new_dest and os.path.isfile(file):
-                print(new_dest, filename, file)
                 subdirectory = os.path.join(self.path, new_dest)
                 if not os.path.exists(subdirectory):
                     os.makedirs(subdirectory)
-                    
+                logging.info(f"File {file} has been succesfully moved to {subdirectory}")
                 os.rename(file, os.path.join(subdirectory, filename))
 
 
