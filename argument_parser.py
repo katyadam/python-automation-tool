@@ -1,7 +1,6 @@
 from parse_error import ParseError
 from datetime import datetime
 from bounds import Bound
-from td_pairs import TDpair
 
 def parse_size_bounds(size: str) -> Bound:
     """
@@ -34,14 +33,14 @@ def parse_datetime_bounds(input_range: str) -> Bound:
 def parse_file_types(types_arg: str) -> set[str]:
     return set(types_arg.split(","))
 
-def parse_dataset(pairs_input: str) -> list[TDpair]:
-    result = []
+def parse_dataset(pairs_input: str) -> dict[str, str]:
+    result = {}
     
     for input in pairs_input.split(","):
         pair = input.split("-")
         if len(pair) != 2:
             raise ParseError("Incorrect type-directory pair!")
-        result.append(TDpair(pair[0], pair[1]))
+        result[pair[0]] = pair[1]
 
     return result
     
