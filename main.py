@@ -20,7 +20,7 @@ def run() -> None:
         Factory.auto_unzip(sys.argv)
     
     else:
-        logging.error("""
+        logging.warn("""
                         Invalid option, please select from:\n
                         'TODO add more options!!!'  
                         -r: remove files

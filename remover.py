@@ -12,6 +12,7 @@ class Remover:
         self.date: Bound = argument_parser.parse_datetime_bounds(args[3])
         self.types: set[str] = argument_parser.parse_file_types(args[4])
         self.size: Bound = argument_parser.parse_size_bounds(args[5])
+        self.log()
     
     def remove(self) -> None:
         for filename in os.listdir(self.path):

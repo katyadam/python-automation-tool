@@ -11,7 +11,9 @@
                                    pdf-./mypdfs,docx-./mydocs
 
 #### Zipping
-    python main.py -z [WHAT] [NAME OF ZIP]
+    python main.py -z [WHAT]            [NAME OF ZIP]
+                      divided by ","  
+
 
 #### Unzipping 
     python main.py -u [WHAT] [WHERE]
