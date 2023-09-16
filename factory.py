@@ -3,6 +3,7 @@ import logging
 from remover import Remover
 from distibutor import Distributor
 from zipper import Zipper
+from unzipper import Unzipper
 
 class Factory:
     
@@ -38,4 +39,9 @@ class Factory:
 
     @staticmethod
     def auto_unzip(args: list[str]) -> None:
-        pass
+        if len(args) != 4:
+            logging.error("Incorrect number of arguments! Please see the documentation :)")
+            return
+        unzipper = Unzipper(args)
+        unzipper.unzip()
+

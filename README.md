@@ -16,4 +16,5 @@
 
 
 #### Unzipping 
-    python main.py -u [WHAT] [WHERE]
+    python main.py -u [WHAT]            [NAME OF FOLDER]
+                      divided by ","  
