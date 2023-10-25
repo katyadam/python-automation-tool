@@ -5,6 +5,7 @@ import logging
 from datetime import datetime
 from bounds import Bound
 
+
 class Remover:
     def __init__(self, args: list[str]) -> None:
         self.args: list[str] = args
@@ -13,7 +14,7 @@ class Remover:
         self.types: set[str] = argument_parser.parse_file_types(args[4])
         self.size: Bound = argument_parser.parse_size_bounds(args[5])
         self.log()
-    
+
     def remove(self) -> None:
         for filename in os.listdir(self.path):
             file = os.path.join(self.path, filename)
@@ -31,7 +32,7 @@ class Remover:
     def is_in_daterange(self, file: str) -> bool:
         last_mod_date = datetime.fromtimestamp(os.path.getmtime(file))
         return self.date.lower <= last_mod_date <= self.date.upper
-    
+
     def is_in_sizerange(self, file: str) -> bool:
         file_size = os.path.getsize(file)
 

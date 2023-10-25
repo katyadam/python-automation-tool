@@ -3,12 +3,13 @@ import os
 
 from zipfile import ZipFile
 
+
 class Unzipper:
     def __init__(self, args: list[str]) -> None:
         self.source: str = args[2]
         self.destination: str = args[3]
         self.log()
-    
+
     def unzip(self) -> None:
         if not os.path.exists(self.destination):
             os.makedirs(self.destination)

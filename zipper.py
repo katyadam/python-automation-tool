@@ -2,6 +2,7 @@ import os
 import logging
 import zipfile
 
+
 class Zipper:
     def __init__(self, args: list[str], remove_on_zip: bool) -> None:
         self.source: str = args[2]
@@ -12,7 +13,7 @@ class Zipper:
     def zip(self) -> None:
         sources = self.source.split(",")
         allowed_sources = []
-        
+
         for s in sources:
             if os.path.exists(s):
                 allowed_sources.append(s)
@@ -25,6 +26,6 @@ class Zipper:
                 logging.info(f"Adding {s} into {self.zip_name} zip")
                 if self.remove_on_zip:
                     os.remove(s)
-    
+
     def log(self) -> None:
         logging.info("Zipper create!")

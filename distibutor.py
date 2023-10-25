@@ -1,28 +1,29 @@
-
 import argument_parser
 import logging
 import os
 
+
 class Distributor:
     def __init__(self, args: list[str]) -> None:
         self.path: str = args[2]
-        self.pair_dataset: dict[str, str] = argument_parser.parse_dataset(args[3])
+        self.pair_dataset: dict[str,
+                                str] = argument_parser.parse_dataset(args[3])
         self.log()
 
     def distribute(self) -> None:
         for filename in os.listdir(self.path):
             file = os.path.join(self.path, filename)
             new_dest = self.get_file_new_dest(filename)
-            
+
             if new_dest and os.path.isfile(file):
                 subdirectory = os.path.join(self.path, new_dest)
-            
+
                 if not os.path.exists(subdirectory):
                     os.makedirs(subdirectory)
-            
-                logging.info(f"File {file} has been succesfully moved to {subdirectory}")
-                os.rename(file, os.path.join(subdirectory, filename))
 
+                logging.info(
+                    f"File {file} has been succesfully moved to {subdirectory}")
+                os.rename(file, os.path.join(subdirectory, filename))
 
     def get_file_new_dest(self, file: str) -> str:
         file_ext = os.path.splitext(file)[1][1:]
@@ -30,7 +31,6 @@ class Distributor:
             return self.pair_dataset[file_ext]
         else:
             return None
-
 
     def log(self) -> None:
         logging.info("Distributor created!")
